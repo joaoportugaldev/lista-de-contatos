@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import variables from '../../styles/variables'
 
 export const Button = styled.button`
   padding: 8px;
   border: none;
   border-radius: 8px;
-  background-color: #fdcb6e;
-  color: #fff;
+  border: 1px solid ${variables.textButtonColor};
+  background-color: ${variables.branco};
+  color: ${variables.textButtonColor};
   letter-spacing: 1px;
   font-weight: 500;
   cursor: pointer;
@@ -16,9 +18,13 @@ export const Button = styled.button`
 `
 
 export const ButtonDelete = styled(Button)`
-  background-color: #d63031;
+  border: none;
+  background-color: ${variables.vermelho};
+  color: ${variables.branco};
 `
 
-export const ButtonEdit = styled(Button)`
-  background-color: #00b894;
+export const ButtonSave = styled(Button)`
+  border: none;
+  background-color: ${variables.verde};
+  color: ${variables.branco};
 `

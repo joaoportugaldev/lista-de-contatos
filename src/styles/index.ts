@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
+import variables from './variables'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -26,5 +27,5 @@ export const Title = styled.h1`
 
 export const MainContainer = styled.main`
   margin: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid ${variables.cinza};
 `

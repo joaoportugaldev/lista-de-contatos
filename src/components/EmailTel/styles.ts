@@ -1,13 +1,14 @@
 import styled from 'styled-components'
+import variables from '../../styles/variables'
 
 export const EmailTelItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  margin-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 1px solid ${variables.cinza};
   height: 78px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid ${variables.cinza};
   gap: 4px;
 `
 

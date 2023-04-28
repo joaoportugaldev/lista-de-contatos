@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import variables from '../../styles/variables'
 
 export const Box = styled.div`
-  margin-right: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: 1px solid ${variables.cinza};
 `
 export const BoxTitle = styled.h2`
   font-size: 16px;
@@ -13,7 +14,7 @@ export const BoxTitle = styled.h2`
 
 export const BoxList = styled.ul`
   margin-left: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid ${variables.cinza};
 `
 
 export const SecondBoxList = styled(BoxList)`
