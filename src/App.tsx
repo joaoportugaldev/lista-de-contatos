@@ -1,5 +1,21 @@
+import { GlobalStyle } from './styles'
+import { Container, Title, MainContainer } from './styles'
+import ContactListSection from './containers/ContactBook'
+import Menu from './containers/Menu'
+
 function App() {
-  return <h1>Olá Mundo</h1>
+  return (
+    <>
+      <GlobalStyle />
+      <Container>
+        <Title>Lista de Contatos</Title>
+        <MainContainer>
+          <Menu />
+          <ContactListSection />
+        </MainContainer>
+      </Container>
+    </>
+  )
 }
 
 export default App
