@@ -19,3 +19,9 @@ export const EmailTelContent = styled.div`
   gap: 8px;
   font-weight: 500;
 `
+
+export const selectContact = styled.input`
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+`

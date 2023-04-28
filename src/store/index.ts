@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import contactsListReducer from './reducers/contactsList'
+import checkboxReducer from './reducers/checkbox'
 
 const store = configureStore({
   reducer: {
-    contactsList: contactsListReducer
+    contactsList: contactsListReducer,
+    checkbox: checkboxReducer
   }
 })
 

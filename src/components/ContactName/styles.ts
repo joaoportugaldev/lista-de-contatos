@@ -18,8 +18,3 @@ export const Name = styled.h3`
   font-size: 16px;
   font-weight: 500;
 `
-export const selectContact = styled.input`
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-`
