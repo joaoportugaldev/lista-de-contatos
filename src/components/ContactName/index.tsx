@@ -1,7 +1,7 @@
 import * as S from './styles'
-import { ContactProps } from '../../containers/ContactBook'
+import { Contact } from '../../containers/ContactBook'
 
-type ContactName = Omit<ContactProps, 'tel' | 'email'>
+type ContactName = Omit<Contact, 'tel' | 'email'>
 
 function ContactName(props: ContactName) {
   return (

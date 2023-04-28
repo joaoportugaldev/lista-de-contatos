@@ -2,7 +2,7 @@ import * as S from './styles'
 import ContactNameList from '../../components/Boxes/ContactNameList'
 import EmailTelList from '../../components/Boxes/EmailTelList'
 
-export type ContactProps = {
+export type Contact = {
   name: string
   tel: string
   email: string

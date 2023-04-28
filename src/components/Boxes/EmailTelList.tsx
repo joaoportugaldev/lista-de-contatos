@@ -1,8 +1,13 @@
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
 import EmailTel from '../EmailTel'
 import * as S from './styles'
-import { contactsList } from './ContactNameList'
 
 function EmailTelList() {
+  const contactsList = useSelector(
+    (state: RootReducer) => state.contactsList.contacts
+  )
   return (
     <S.Box>
       <S.SecondBoxTitle>Contact</S.SecondBoxTitle>
