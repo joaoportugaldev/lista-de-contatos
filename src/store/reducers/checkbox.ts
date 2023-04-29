@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type CheckboxState = {
+export type CheckboxState = {
   checkboxes: {
     [id: number]: boolean
   }

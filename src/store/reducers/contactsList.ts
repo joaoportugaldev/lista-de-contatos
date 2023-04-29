@@ -22,9 +22,15 @@ const contactsListSlice = createSlice({
       } else {
         state.contacts = [...contactsInitialState, novoContato]
       }
+    },
+    remover: (state, action: PayloadAction<number>) => {
+      const contactIdToBeRemoved = action.payload
+      state.contacts = state.contacts.filter(
+        (c) => c.id !== contactIdToBeRemoved
+      )
     }
   }
 })
 
-export const { adicionar } = contactsListSlice.actions
+export const { adicionar, remover } = contactsListSlice.actions
 export default contactsListSlice.reducer

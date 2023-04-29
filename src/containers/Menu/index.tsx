@@ -1,12 +1,19 @@
-import * as S from './styles'
-
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import * as S from './styles'
 import { Input } from '../../components/Inputs'
 import * as B from '../../components/Buttons/Buttons'
+import { RootReducer } from '../../store'
+import { remover } from '../../store/reducers/contactsList'
 
 function Menu() {
   const [isEditing, setIsEditing] = useState(false)
+  const selectedContact = useSelector(
+    (state: RootReducer) => state.checkbox.checkboxes
+  )
+  const selectedContactId = Object.keys(selectedContact).map((c) => parseInt(c))
+  const dispatch = useDispatch()
 
   return (
     <S.Nav>
@@ -25,7 +32,13 @@ function Menu() {
           <>
             <B.Button>Adicionar</B.Button>
             <B.Button onClick={() => setIsEditing(true)}>Editar</B.Button>
-            <B.Button>Remover</B.Button>
+            <B.Button
+              onClick={() => {
+                selectedContactId.forEach((c) => dispatch(remover(c)))
+              }}
+            >
+              Remover
+            </B.Button>
           </>
         )}
       </S.ButtonsContainer>
