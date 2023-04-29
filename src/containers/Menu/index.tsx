@@ -12,8 +12,19 @@ function Menu() {
   const selectedContact = useSelector(
     (state: RootReducer) => state.checkbox.checkboxes
   )
-  const selectedContactId = Object.keys(selectedContact).map((c) => parseInt(c))
+  const selectedContactId: number[] = Object.entries(selectedContact)
+    .map(([id, value]) => {
+      if (value === true) {
+        return parseFloat(id)
+      }
+    })
+    .filter((id) => id !== undefined) as number[]
+
   const dispatch = useDispatch()
+
+  function handleClickRemoveButton() {
+    selectedContactId.forEach((id) => dispatch(remover(id)))
+  }
 
   return (
     <S.Nav>
@@ -34,7 +45,7 @@ function Menu() {
             <B.Button onClick={() => setIsEditing(true)}>Editar</B.Button>
             <B.Button
               onClick={() => {
-                selectedContactId.forEach((c) => dispatch(remover(c)))
+                handleClickRemoveButton()
               }}
             >
               Remover
