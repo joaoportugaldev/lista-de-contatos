@@ -4,11 +4,12 @@ import { toggleCheckbox } from '../../store/reducers/checkbox'
 
 import { CheckBoxStyled } from './styles'
 
-interface CheckboxProps {
+export type CheckboxProps = {
   id: number
+  display?: string
 }
 
-const Checkbox = ({ id }: CheckboxProps) => {
+const Checkbox = ({ id, display }: CheckboxProps) => {
   const dispatch = useDispatch()
   const isChecked = useSelector(
     (state: RootReducer) => state.checkbox.checkboxes[id]
@@ -23,6 +24,7 @@ const Checkbox = ({ id }: CheckboxProps) => {
       type="checkbox"
       checked={isChecked}
       onChange={handleToggle}
+      display={display}
     />
   )
 }

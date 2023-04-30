@@ -1,20 +1,19 @@
-import * as S from './styles'
-import ContactNameList from '../../components/Boxes/ContactNameList'
-import EmailTelList from '../../components/Boxes/EmailTelList'
+import { useSelector } from 'react-redux'
 
-export type Contact = {
-  name: string
-  tel: string
-  email: string
-  id: number
-}
+import * as S from './styles'
+import Contact from '../../components/Contact'
+import { RootReducer } from '../../store'
 
 function ContactListSection() {
+  const { contacts } = useSelector((state: RootReducer) => state.contactsList)
   return (
-    <S.SectionGrid>
-      <ContactNameList />
-      <EmailTelList />
-    </S.SectionGrid>
+    <S.ContactList>
+      {contacts.map((c) => (
+        <li key={c.id}>
+          <Contact id={c.id} name={c.name} tel={c.tel} email={c.email} />
+        </li>
+      ))}
+    </S.ContactList>
   )
 }
 

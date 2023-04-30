@@ -1,13 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Contact } from '../../containers/ContactBook'
-import { joao, pedro, bruno } from '../../models/Contact'
+import { Contact } from '../../components/Contact'
 
 type ContactsState = {
   contacts: Contact[]
 }
 
 const initialState: ContactsState = {
-  contacts: [joao, pedro, bruno]
+  contacts: [
+    {
+      id: 1,
+      name: 'joao',
+      email: 'joaosportugal@hotmail.com',
+      tel: '21989434454'
+    },
+    {
+      id: 2,
+      name: 'bruno',
+      email: 'brunoreis@hotmail.com',
+      tel: '61098419842'
+    },
+    {
+      id: 3,
+      name: 'pedro',
+      email: 'pedromenescal@hotmail.com',
+      tel: '21984219433'
+    }
+  ]
 }
 
 const contactsListSlice = createSlice({
