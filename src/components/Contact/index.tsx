@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as S from './styles'
-import { RootReducer } from '../../store'
-import { setIsEditing } from '../../store/reducers/isEditing'
+import { editar, remover } from '../../store/reducers/contactsList'
 
 export type Contact = {
   id: number
@@ -17,8 +16,8 @@ function Contact({
   tel: originalTel,
   email: originalEmail
 }: Contact) {
-  const { isEditing } = useSelector((state: RootReducer) => state)
-
+  // const { isEditing } = useSelector((state: RootReducer) => state)
+  const [estaEditando, setEstaEditando] = useState(false)
   const [name, setName] = useState('')
   const [tel, setTel] = useState('')
   const [email, setEmail] = useState('')
@@ -31,6 +30,25 @@ function Contact({
 
   const dispatch = useDispatch()
 
+  function cancelEditing() {
+    setEstaEditando(false)
+    setName(originalName)
+    setTel(originalTel)
+    setEmail(originalEmail)
+  }
+
+  function toEdit() {
+    setEstaEditando(false)
+    dispatch(
+      editar({
+        id: id,
+        name: name,
+        tel: tel,
+        email: email
+      })
+    )
+  }
+
   return (
     <S.Contact>
       <S.NameContainer>
@@ -40,7 +58,7 @@ function Contact({
           alt="Foto de Perfil"
         />
         <S.NameTextarea
-          disabled={!isEditing}
+          disabled={!estaEditando}
           value={name}
           onChange={(evento) => setName(evento.target.value)}
         />
@@ -49,7 +67,7 @@ function Contact({
         <S.Info>
           <span className="material-symbols-outlined">mail</span>
           <S.Textarea
-            disabled={!isEditing}
+            disabled={!estaEditando}
             value={email}
             onChange={(evento) => setEmail(evento.target.value)}
           />
@@ -57,28 +75,28 @@ function Contact({
         <S.Info>
           <span className="material-symbols-outlined">call</span>
           <S.Textarea
-            disabled={!isEditing}
+            disabled={!estaEditando}
             value={tel}
             onChange={(evento) => setTel(evento.target.value)}
           />
         </S.Info>
       </S.InfoContainer>
       <S.Buttons>
-        {isEditing ? (
+        {estaEditando ? (
           <>
-            <S.Button onClick={() => dispatch(setIsEditing(false))}>
+            <S.Button onClick={() => toEdit()}>
               <span className="material-symbols-outlined">check</span>
             </S.Button>
-            <S.Button>
+            <S.Button onClick={() => cancelEditing()}>
               <span className="material-symbols-outlined">close</span>
             </S.Button>
           </>
         ) : (
           <>
-            <S.Button onClick={() => dispatch(setIsEditing(true))}>
+            <S.Button onClick={() => setEstaEditando(true)}>
               <span className="material-symbols-outlined">edit</span>
             </S.Button>
-            <S.Button>
+            <S.Button onClick={() => dispatch(remover(id))}>
               <span className="material-symbols-outlined">delete</span>
             </S.Button>
           </>

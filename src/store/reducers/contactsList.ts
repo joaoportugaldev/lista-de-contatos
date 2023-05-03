@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, isAction, PayloadAction } from '@reduxjs/toolkit'
 import { Contact } from '../../components/Contact'
 
 type ContactsState = {
@@ -46,9 +46,18 @@ const contactsListSlice = createSlice({
       state.contacts = state.contacts.filter(
         (c) => c.id !== contactIdToBeRemoved
       )
+    },
+    editar: (state, action: PayloadAction<Contact>) => {
+      const indexDoContato = state.contacts.findIndex(
+        (c) => c.id === action.payload.id
+      )
+
+      if (indexDoContato >= 0) {
+        state.contacts[indexDoContato] = action.payload
+      }
     }
   }
 })
 
-export const { adicionar, remover } = contactsListSlice.actions
+export const { adicionar, remover, editar } = contactsListSlice.actions
 export default contactsListSlice.reducer
