@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
-import Checkbox from '../Checkbox'
 import { RootReducer } from '../../store'
+import { setIsEditing } from '../../store/reducers/isEditing'
 
 export type Contact = {
   id: number
@@ -17,7 +17,7 @@ function Contact({
   tel: originalTel,
   email: originalEmail
 }: Contact) {
-  const isEditingState = useSelector((state: RootReducer) => state.isEditing)
+  const { isEditing } = useSelector((state: RootReducer) => state)
 
   const [name, setName] = useState('')
   const [tel, setTel] = useState('')
@@ -29,39 +29,61 @@ function Contact({
     originalEmail.length ? setEmail(originalEmail) : setEmail('')
   }, [originalName, originalTel, originalEmail])
 
+  const dispatch = useDispatch()
+
   return (
     <S.Contact>
-      <S.ContactNameItem>
-        <Checkbox id={id} />
+      <S.NameContainer>
         <img
-          src="https://via.placeholder.com/40x40"
-          alt="Foto de Perfil"
           className="foto-perfil"
+          src="https://via.placeholder.com/50x50"
+          alt="Foto de Perfil"
         />
-        <S.Name
-          disabled={!isEditingState}
+        <S.NameTextarea
+          disabled={!isEditing}
           value={name}
           onChange={(evento) => setName(evento.target.value)}
         />
-      </S.ContactNameItem>
-      <S.EmailTelItem>
-        <S.EmailTelContent>
+      </S.NameContainer>
+      <S.InfoContainer>
+        <S.Info>
           <span className="material-symbols-outlined">mail</span>
           <S.Textarea
-            disabled={!isEditingState}
+            disabled={!isEditing}
             value={email}
             onChange={(evento) => setEmail(evento.target.value)}
           />
-        </S.EmailTelContent>
-        <S.EmailTelContent>
+        </S.Info>
+        <S.Info>
           <span className="material-symbols-outlined">call</span>
           <S.Textarea
-            disabled={!isEditingState}
+            disabled={!isEditing}
             value={tel}
             onChange={(evento) => setTel(evento.target.value)}
           />
-        </S.EmailTelContent>
-      </S.EmailTelItem>
+        </S.Info>
+      </S.InfoContainer>
+      <S.Buttons>
+        {isEditing ? (
+          <>
+            <S.Button onClick={() => dispatch(setIsEditing(false))}>
+              <span className="material-symbols-outlined">check</span>
+            </S.Button>
+            <S.Button>
+              <span className="material-symbols-outlined">close</span>
+            </S.Button>
+          </>
+        ) : (
+          <>
+            <S.Button onClick={() => dispatch(setIsEditing(true))}>
+              <span className="material-symbols-outlined">edit</span>
+            </S.Button>
+            <S.Button>
+              <span className="material-symbols-outlined">delete</span>
+            </S.Button>
+          </>
+        )}
+      </S.Buttons>
     </S.Contact>
   )
 }

@@ -3,12 +3,12 @@ import variables from '../../styles/variables'
 
 export const Contact = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr auto;
   height: 78px;
   border-bottom: 1px solid ${variables.cinza};
 `
 
-export const EmailTelContent = styled.div`
+export const Info = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -17,21 +17,7 @@ export const EmailTelContent = styled.div`
   font-weight: 500;
 `
 
-export const ContactNameItem = styled.div`
-  width: 80%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 8px;
-  height: 78px;
-  border-bottom: 1px solid ${variables.cinza};
-
-  .foto-perfil {
-    border-radius: 50%;
-  }
-`
-
-export const EmailTelItem = styled.li`
+export const InfoContainer = styled.li`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -43,7 +29,22 @@ export const EmailTelItem = styled.li`
   gap: 4px;
 `
 
+export const NameContainer = styled.div`
+  width: 80%;
+  margin-left: 16px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  height: 78px;
+  border-bottom: 1px solid ${variables.cinza};
+
+  .foto-perfil {
+    border-radius: 50%;
+  }
+`
 export const Textarea = styled.textarea`
+  background-color: ${variables.branco};
   border: none;
   padding: 0 4px;
   font-size: 16px;
@@ -52,7 +53,29 @@ export const Textarea = styled.textarea`
   resize: none;
   overflow-y: hidden;
 `
-
-export const Name = styled(Textarea)`
+export const NameTextarea = styled(Textarea)`
   font-weight: 500;
+`
+
+export const Buttons = styled.div`
+  min-width: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+
+  span {
+    background-color: #fff;
+    border: none;
+  }
+`
+
+export const Button = styled.button`
+  border: none;
+  background-color: #fff;
+  display: flex;
+  padding: 8px;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
 `
