@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import * as S from './styles'
@@ -6,12 +5,15 @@ import { Input } from '../../components/Inputs'
 import * as B from '../../components/Buttons/Buttons'
 import { RootReducer } from '../../store'
 import { remover } from '../../store/reducers/contactsList'
+import { setIsEditing } from '../../store/reducers/isEditing'
 
 function Menu() {
-  const [isEditing, setIsEditing] = useState(false)
+  const isEditing = useSelector((state: RootReducer) => state.isEditing)
+
   const selectedContact = useSelector(
     (state: RootReducer) => state.checkbox.checkboxes
   )
+
   const selectedContactId: number[] = Object.entries(selectedContact)
     .map(([id, value]) => {
       if (value === true) {
@@ -32,17 +34,23 @@ function Menu() {
       <S.ButtonsContainer>
         {isEditing ? (
           <>
-            <B.ButtonSave onClick={() => setIsEditing(false)}>
+            <B.ButtonSave onClick={() => dispatch(setIsEditing(false))}>
               Salvar
             </B.ButtonSave>
-            <B.ButtonDelete onClick={() => setIsEditing(false)}>
+            <B.ButtonDelete
+              onClick={() => {
+                dispatch(setIsEditing(false))
+              }}
+            >
               Cancelar
             </B.ButtonDelete>
           </>
         ) : (
           <>
             <B.Button>Adicionar</B.Button>
-            <B.Button onClick={() => setIsEditing(true)}>Editar</B.Button>
+            <B.Button onClick={() => dispatch(setIsEditing(true))}>
+              Editar
+            </B.Button>
             <B.Button
               onClick={() => {
                 handleClickRemoveButton()

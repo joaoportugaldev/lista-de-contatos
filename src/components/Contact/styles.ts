@@ -7,11 +7,9 @@ export const Contact = styled.div`
   height: 78px;
   border-bottom: 1px solid ${variables.cinza};
 `
-export const Name = styled.h3`
-  font-size: 16px;
-  font-weight: 500;
-`
+
 export const EmailTelContent = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,6 +18,7 @@ export const EmailTelContent = styled.div`
 `
 
 export const ContactNameItem = styled.div`
+  width: 80%;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -33,12 +32,27 @@ export const ContactNameItem = styled.div`
 `
 
 export const EmailTelItem = styled.li`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
   margin-bottom: 1px solid ${variables.cinza};
-  height: 78px;
   border-bottom: 1px solid ${variables.cinza};
+  height: 78px;
   gap: 4px;
+`
+
+export const Textarea = styled.textarea`
+  border: none;
+  padding: 0 4px;
+  font-size: 16px;
+  max-height: 1.4em;
+  width: 80%;
+  resize: none;
+  overflow-y: hidden;
+`
+
+export const Name = styled(Textarea)`
+  font-weight: 500;
 `
