@@ -6,9 +6,17 @@ import { RootReducer } from '../../store'
 
 function ContactListSection() {
   const { contacts } = useSelector((state: RootReducer) => state.contactsList)
+  const { termo } = useSelector((state: RootReducer) => state.search)
+
+  const filterContacts = () => {
+    return contacts.filter(
+      (c) => c.name.toLowerCase().search(termo.toLowerCase()) >= 0
+    )
+  }
+
   return (
     <S.ContactList>
-      {contacts.map((c) => (
+      {filterContacts().map((c) => (
         <li key={c.id}>
           <Contact id={c.id} name={c.name} tel={c.tel} email={c.email} />
         </li>
