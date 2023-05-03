@@ -78,4 +78,9 @@ export const Button = styled.button`
   width: fit-content;
   height: fit-content;
   cursor: pointer;
+  color: ${variables.verde};
+`
+
+export const ButtonDelete = styled(Button)`
+  color: ${variables.vermelho};
 `

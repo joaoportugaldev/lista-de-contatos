@@ -20,6 +20,7 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   display: block;
+  color: ${variables.verde};
   margin-top: 40px;
   margin-bottom: 40px;
   font-size: 24px;

@@ -9,9 +9,13 @@ function ContactListSection() {
   const { termo } = useSelector((state: RootReducer) => state.search)
 
   const filterContacts = () => {
-    return contacts.filter(
-      (c) => c.name.toLowerCase().search(termo.toLowerCase()) >= 0
-    )
+    if (termo) {
+      return contacts.filter(
+        (c) => c.name.toLowerCase().search(termo.toLowerCase()) >= 0
+      )
+    } else {
+      return contacts
+    }
   }
 
   return (

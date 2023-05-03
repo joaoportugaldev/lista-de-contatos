@@ -87,18 +87,18 @@ function Contact({
             <S.Button onClick={() => toEdit()}>
               <span className="material-symbols-outlined">check</span>
             </S.Button>
-            <S.Button onClick={() => cancelEditing()}>
+            <S.ButtonDelete onClick={() => cancelEditing()}>
               <span className="material-symbols-outlined">close</span>
-            </S.Button>
+            </S.ButtonDelete>
           </>
         ) : (
           <>
             <S.Button onClick={() => setEstaEditando(true)}>
               <span className="material-symbols-outlined">edit</span>
             </S.Button>
-            <S.Button onClick={() => dispatch(remover(id))}>
+            <S.ButtonDelete onClick={() => dispatch(remover(id))}>
               <span className="material-symbols-outlined">delete</span>
-            </S.Button>
+            </S.ButtonDelete>
           </>
         )}
       </S.Buttons>
