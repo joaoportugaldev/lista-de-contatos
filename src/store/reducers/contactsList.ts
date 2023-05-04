@@ -35,9 +35,22 @@ const contactsListSlice = createSlice({
     adicionar: (state, action: PayloadAction<Contact>) => {
       const novoContato = action.payload
       const contactsInitialState = state.contacts
-      if (state.contacts.find((c) => c.id === novoContato.id)) {
-        alert('Esse contato já existe')
-      } else {
+
+      const nomeJaExiste = state.contacts.find((c) => {
+        c.name.toLowerCase() === novoContato.name.toLowerCase()
+      })
+      const emailJaExiste = state.contacts.find((c) => {
+        c.email.toLowerCase() === novoContato.email.toLowerCase()
+      })
+      const telJaExiste = state.contacts.find((c) => {
+        c.tel.toLowerCase() === novoContato.email.toLowerCase()
+      })
+
+      if (nomeJaExiste) return alert('Esse nome já existe')
+      if (emailJaExiste) return alert('Esse email já existe')
+      if (telJaExiste) return alert('Esse telefone já existe')
+
+      if (!nomeJaExiste && !emailJaExiste && !telJaExiste) {
         state.contacts = [...contactsInitialState, novoContato]
       }
     },
