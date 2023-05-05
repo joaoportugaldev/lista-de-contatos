@@ -4,5 +4,5 @@ export default {
   verde: '#00b894',
   cinza: '#DCDCDC',
   branco: '#fff',
-  textButtonColor: 'black'
+  textButtonColor: '#1e272e'
 }

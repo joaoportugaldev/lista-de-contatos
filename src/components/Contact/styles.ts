@@ -6,6 +6,7 @@ export const Contact = styled.div`
   grid-template-columns: 1fr 1fr auto;
   height: 78px;
   border-bottom: 1px solid ${variables.cinza};
+  overflow-x: hidden;
 
   @media (max-width: 767px) {
     grid-template-columns: none;
@@ -55,7 +56,7 @@ export const InfoContainer = styled.div`
     height: fit-content;
     padding: 8px 0px;
     border: none;
-    margin-left: 28px;
+    margin-left: 16px;
   }
 `
 
@@ -77,10 +78,17 @@ export const NameContainer = styled.div`
     height: fit-content;
     border: none;
     padding-top: 8px;
+
+    .foto-perfil {
+      border-radius: 50%;
+      display: none;
+    }
   }
 `
 export const Textarea = styled.textarea`
   background-color: ${variables.branco};
+  color: ${variables.textButtonColor};
+  font-weight: 500;
   border: none;
   padding: 0 4px;
   font-size: 16px;
@@ -91,6 +99,10 @@ export const Textarea = styled.textarea`
 `
 export const NameTextarea = styled(Textarea)`
   font-weight: 500;
+  font-size: 18px;
+  color: ${variables.verde};
+  text-transform: capitalize;
+  padding: 0px;
 `
 
 export const Buttons = styled.div`

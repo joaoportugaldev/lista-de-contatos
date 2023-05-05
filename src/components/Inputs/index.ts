@@ -9,7 +9,8 @@ export const Input = styled.input`
 
   &:active,
   &:focus {
-    outline: 2px solid ${variables.verde};
+    outline: 1px solid ${variables.verde};
+    border: 1px solid ${variables.verde};
   }
 
   @media (max-width: 767px) {
