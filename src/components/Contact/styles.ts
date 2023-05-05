@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import variables from '../../styles/variables'
 
+type TextareaProps = {
+  active?: boolean
+}
+
 export const Contact = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr auto;
@@ -85,17 +89,24 @@ export const NameContainer = styled.div`
     }
   }
 `
-export const Textarea = styled.textarea`
+export const Textarea = styled.textarea<TextareaProps>`
   background-color: ${variables.branco};
   color: ${variables.textButtonColor};
   font-weight: 500;
   border: none;
-  padding: 0 4px;
+  padding: 0px 4px;
   font-size: 16px;
-  max-height: 1.4em;
+  max-height: 1.5em;
   width: 80%;
   resize: none;
   overflow-y: hidden;
+  outline: none;
+
+  &:active,
+  &:focus {
+    border: 2px solid ${variables.verde};
+    border-radius: 8px;
+  }
 `
 export const NameTextarea = styled(Textarea)`
   font-weight: 500;

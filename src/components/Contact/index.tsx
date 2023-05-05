@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
 import { editar, remover } from '../../store/reducers/contactsList'
@@ -16,7 +16,7 @@ function Contact({
   tel: originalTel,
   email: originalEmail
 }: Contact) {
-  // const { isEditing } = useSelector((state: RootReducer) => state)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [estaEditando, setEstaEditando] = useState(false)
   const [name, setName] = useState('')
   const [tel, setTel] = useState('')
@@ -26,7 +26,10 @@ function Contact({
     originalName.length ? setName(originalName) : setName('')
     originalTel.length ? setTel(originalTel) : setTel('')
     originalEmail.length ? setEmail(originalEmail) : setEmail('')
-  }, [originalName, originalTel, originalEmail])
+    if (estaEditando && textareaRef.current) {
+      textareaRef.current.focus()
+    }
+  }, [estaEditando, originalName, originalTel, originalEmail])
 
   const dispatch = useDispatch()
 
@@ -67,6 +70,7 @@ function Contact({
         <S.Info>
           <span className="material-symbols-outlined">mail</span>
           <S.Textarea
+            ref={textareaRef}
             disabled={!estaEditando}
             value={email}
             onChange={(evento) => setEmail(evento.target.value)}
