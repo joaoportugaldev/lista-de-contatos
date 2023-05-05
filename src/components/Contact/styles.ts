@@ -17,7 +17,7 @@ export const Info = styled.div`
   font-weight: 500;
 `
 
-export const InfoContainer = styled.li`
+export const InfoContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

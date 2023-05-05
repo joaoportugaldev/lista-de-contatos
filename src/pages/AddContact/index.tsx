@@ -1,49 +1,41 @@
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { adicionar } from '../../store/reducers/contactsList'
 
 import { Input } from '../../components/Inputs'
 import * as S from './styles'
 import { useDispatch } from 'react-redux'
-import { RootReducer } from '../../store'
 
 const AddContact = () => {
-  const { contacts } = useSelector((state: RootReducer) => state.contactsList)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [tel, setTel] = useState('')
   const [email, setEmail] = useState('')
-  const [contact, setContact] = useState({
-    id: 0,
-    name: '',
-    tel: '',
-    email: ''
-  })
 
-  useEffect(() => {
-    setContact({
-      id: contacts.length + 1,
-      name: name,
-      tel: tel,
-      email: email
-    })
-  }, [name, tel, email, contacts.length])
+  function adicionarContato(evento: FormEvent) {
+    evento.preventDefault()
 
-  const dispatch = useDispatch()
-
-  function handleClick(e: React.MouseEvent) {
-    e.preventDefault()
-    dispatch(adicionar(contact))
+    dispatch(
+      adicionar({
+        name,
+        tel,
+        email
+      })
+    )
+    navigate('/')
   }
 
   return (
-    <S.Form>
+    <S.Form onSubmit={adicionarContato}>
       <S.Arrowback to={'/'}>
         <span className="material-symbols-outlined">arrow_back</span>
       </S.Arrowback>
       <S.Title2>Novo Contato</S.Title2>
       <Input
+        value={name}
         placeholder="Nome"
         type="text"
         onChange={(e) => {
@@ -51,6 +43,7 @@ const AddContact = () => {
         }}
       />
       <Input
+        value={tel}
         placeholder="Telefone"
         type="number"
         onChange={(e) => {
@@ -58,6 +51,7 @@ const AddContact = () => {
         }}
       />
       <Input
+        value={email}
         placeholder="Email"
         type="text"
         onChange={(e) => {
@@ -65,10 +59,10 @@ const AddContact = () => {
         }}
       />
       <S.ButtonsContainer>
-        <S.Button type="submit" onClick={(e) => handleClick(e)}>
-          Adicionar
-        </S.Button>
-        <S.ButtonCancel>Cancelar</S.ButtonCancel>
+        <S.Button type="submit">Adicionar</S.Button>
+        <S.ButtonCancel type="button" onClick={() => navigate('/')}>
+          Cancelar
+        </S.ButtonCancel>
       </S.ButtonsContainer>
     </S.Form>
   )
