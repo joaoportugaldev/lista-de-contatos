@@ -102,7 +102,6 @@ export const Textarea = styled.textarea<TextareaProps>`
   overflow-y: hidden;
   outline: none;
 
-  &:active,
   &:focus {
     border: 2px solid ${variables.verde};
     border-radius: 8px;
