@@ -7,7 +7,7 @@ export const Button = styled(Link)`
   justify-content: center;
   align-items: center;
   background-color: ${variables.verde};
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   border-radius: 50%;
   color: ${variables.branco};

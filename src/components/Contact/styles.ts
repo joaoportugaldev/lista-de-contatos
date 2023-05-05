@@ -6,6 +6,26 @@ export const Contact = styled.div`
   grid-template-columns: 1fr 1fr auto;
   height: 78px;
   border-bottom: 1px solid ${variables.cinza};
+
+  @media (max-width: 767px) {
+    grid-template-columns: none;
+    height: fit-content;
+    grid-template-areas:
+      'a b'
+      'c c';
+
+    & > div:nth-child(1) {
+      grid-area: a;
+    }
+
+    & > div:nth-child(2) {
+      grid-area: c;
+    }
+
+    & > div:nth-child(3) {
+      grid-area: b;
+    }
+  }
 `
 
 export const Info = styled.div`
@@ -15,18 +35,28 @@ export const Info = styled.div`
   align-items: center;
   gap: 8px;
   font-weight: 500;
+
+  @media (max-width: 767px) {
+    border: none;
+  }
 `
 
 export const InfoContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: start;
   justify-content: center;
   margin-bottom: 1px solid ${variables.cinza};
   border-bottom: 1px solid ${variables.cinza};
   height: 78px;
   gap: 4px;
+
+  @media (max-width: 767px) {
+    height: fit-content;
+    padding: 8px 0px;
+    border: none;
+    margin-left: 28px;
+  }
 `
 
 export const NameContainer = styled.div`
@@ -41,6 +71,12 @@ export const NameContainer = styled.div`
 
   .foto-perfil {
     border-radius: 50%;
+  }
+
+  @media (max-width: 767px) {
+    height: fit-content;
+    border: none;
+    padding-top: 8px;
   }
 `
 export const Textarea = styled.textarea`
@@ -67,6 +103,10 @@ export const Buttons = styled.div`
   span {
     background-color: #fff;
     border: none;
+  }
+
+  @media (max-width: 767px) {
+    justify-content: end;
   }
 `
 
