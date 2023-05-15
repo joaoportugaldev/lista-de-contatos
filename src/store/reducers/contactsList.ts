@@ -1,38 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Contact } from '../../components/Contact'
+import { ContactProps } from '../../components/Contact'
 
 type ContactsState = {
-  contacts: Contact[]
+  contacts: ContactProps[]
 }
 
 const initialState: ContactsState = {
-  contacts: [
-    {
-      id: 1,
-      name: 'joao',
-      email: 'joaosportugal@hotmail.com',
-      tel: '21989434454'
-    },
-    {
-      id: 2,
-      name: 'bruno',
-      email: 'brunoreis@hotmail.com',
-      tel: '61098419842'
-    },
-    {
-      id: 3,
-      name: 'pedro',
-      email: 'pedromenescal@hotmail.com',
-      tel: '21984219433'
-    }
-  ]
+  contacts: []
 }
 
 const contactsListSlice = createSlice({
   name: 'contactsList',
   initialState,
   reducers: {
-    adicionar: (state, action: PayloadAction<Omit<Contact, 'id'>>) => {
+    adicionar: (state, action: PayloadAction<Omit<ContactProps, 'id'>>) => {
       const existeInfoRepetida = (info: 'name' | 'tel' | 'email'): boolean => {
         return state.contacts.some((c) => {
           return c[info] === action.payload[info]
@@ -64,7 +45,7 @@ const contactsListSlice = createSlice({
         (c) => c.id !== contactIdToBeRemoved
       )
     },
-    editar: (state, action: PayloadAction<Contact>) => {
+    editar: (state, action: PayloadAction<ContactProps>) => {
       const indexDoContato = state.contacts.findIndex(
         (c) => c.id === action.payload.id
       )

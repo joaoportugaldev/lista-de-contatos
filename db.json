@@ -1,0 +1,22 @@
+{
+  "contacts": [
+    {
+      "name": "João Portugal",
+      "tel": "21989434454",
+      "email": "joaosportugal@hotmail.com",
+      "id": 1
+    },
+    {
+      "name": "Pedro Menescal",
+      "tel": "21984377843",
+      "email": "pedrocastelo@outlook.com",
+      "id": 2
+    },
+    {
+      "name": "Bruno Reis",
+      "tel": "61989757483",
+      "email": "brunoreis@gmail.com",
+      "id": 3
+    }
+  ]
+}
