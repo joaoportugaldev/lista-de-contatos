@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import * as S from './styles'
 import { editar, remover } from '../../store/reducers/contactsList'
 
-export type Contact = {
+export type ContactProps = {
   id: number
   name: string
   tel: string
@@ -15,7 +15,7 @@ function Contact({
   name: originalName,
   tel: originalTel,
   email: originalEmail
-}: Contact) {
+}: ContactProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [estaEditando, setEstaEditando] = useState(false)
   const [name, setName] = useState('')
