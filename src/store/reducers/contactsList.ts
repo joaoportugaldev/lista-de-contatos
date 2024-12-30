@@ -10,21 +10,9 @@ const initialState: ContactsState = {
     {
       id: 1,
       name: 'joao',
-      email: 'joaosportugal@hotmail.com',
+      email: 'joaoportugaldev@gmail.com',
       tel: '21989434454'
     },
-    {
-      id: 2,
-      name: 'bruno',
-      email: 'brunoreis@hotmail.com',
-      tel: '61098419842'
-    },
-    {
-      id: 3,
-      name: 'pedro',
-      email: 'pedromenescal@hotmail.com',
-      tel: '21984219433'
-    }
   ]
 }
 
